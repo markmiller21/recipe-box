@@ -4,6 +4,9 @@ class Recipe < ActiveRecord::Base
 	has_many :ingredients
 	has_many :directions
 
+	has_many :recipe_tags
+	has_many :tags, :through => :recipe_tags
+
 
 	accepts_nested_attributes_for :ingredients,
   															reject_if: proc { |attributes| attributes['name'].blank? },
